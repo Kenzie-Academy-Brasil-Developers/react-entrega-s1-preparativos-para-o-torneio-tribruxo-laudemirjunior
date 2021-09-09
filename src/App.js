@@ -1,45 +1,43 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import CardPerson from "./components/CardPerson";
-import CardInitial from "./components/CardInitial";
+import PersonalCard from "./components/PersonalCard";
+import InitialPage from "./components/InitialPage";
 
 function App() {
-  const [characterList, setCharacterList] = useState([]);
-  const [estudades, setEstudantes] = useState([]);
-  const [btn, setBtn] = useState(true);
+  const [character, setCharacter] = useState([]);
+  const [students, setstudents] = useState([]);
+  const [InitialButton, setInitialButton] = useState(true);
 
   const atualiza = () => {
-    setEstudantes([
-      characterList
+    setstudents([
+      character
         .sort(() => 0.5 - Math.random())
         .find((list) => list.house === "Gryffindor"),
-      characterList
-        .sort(() => 0.5 - Math.random())
-        .find((list) => list.house === "Slytherin"),
-      characterList
-        .sort(() => 0.5 - Math.random())
-        .find(
-          (list) => list.house === "Hufflepuff" || list.house === "Ravenclaw"
-        ),
+      character.find((list) => list.house === "Slytherin"),
+      character.find(
+        (list) => list.house === "Hufflepuff" || list.house === "Ravenclaw"
+      ),
     ]);
   };
 
   useEffect(() => {
     fetch("http://hp-api.herokuapp.com/api/characters/students")
       .then((response) => response.json())
-      .then((response) => setCharacterList(response))
+      .then((response) => setCharacter(response))
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className="App">
-      {btn && <CardInitial btn={btn} setBtn={setBtn} atualiza={atualiza} />}
-      <div className="initial">
-        <CardPerson estudades={estudades}></CardPerson>
-      </div>
-      <div className="buttons">
-        <button onClick={atualiza}>Tentar novamente</button>
-      </div>
+      <h1>Torneio Tribruxo</h1>
+      {InitialButton && (
+        <InitialPage
+          InitialButton={InitialButton}
+          setInitialButton={setInitialButton}
+          atualiza={atualiza}
+        />
+      )}
+      <PersonalCard students={students} atualiza={atualiza}></PersonalCard>
     </div>
   );
 }

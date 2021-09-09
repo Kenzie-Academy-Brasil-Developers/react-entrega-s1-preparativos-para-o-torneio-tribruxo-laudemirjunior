@@ -1,13 +1,13 @@
 import "./style.css";
 
-const CardInitial = ({ btn, setBtn, atualiza }) => {
+const InitialPage = ({ InitialButton, setInitialButton, atualiza }) => {
   return (
-    <div className="cardInitial">
+    <div className="initialCard">
       <h1>Torneio tribruxo</h1>
       <h2>Clique no botão para encontrar os feiticeiros!</h2>
       <button
-        onClick={function (event) {
-          setBtn(!btn);
+        onClick={function () {
+          setInitialButton(!InitialButton);
           atualiza();
         }}
       >
@@ -17,4 +17,4 @@ const CardInitial = ({ btn, setBtn, atualiza }) => {
   );
 };
 
-export default CardInitial;
+export default InitialPage;
