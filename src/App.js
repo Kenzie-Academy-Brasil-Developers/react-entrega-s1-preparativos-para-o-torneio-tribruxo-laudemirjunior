@@ -1,9 +1,14 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Cards from "./components/Cards";
+import CardPerson from "./components/CardPerson";
 
 function App() {
   const [characterList, setCharacterList] = useState([]);
+  const [estudades, setEstudantes] = useState([]);
+
+  const atualiza = () =>
+    setEstudantes(characterList.sort(() => 0.5 - Math.random()).slice(0, 3));
+
   useEffect(() => {
     fetch("http://hp-api.herokuapp.com/api/characters/students")
       .then((response) => response.json())
@@ -13,7 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <Cards characterList={characterList}></Cards>
+      <CardPerson estudades={estudades}></CardPerson>
+      <button onClick={atualiza}>Click</button>
     </div>
   );
 }

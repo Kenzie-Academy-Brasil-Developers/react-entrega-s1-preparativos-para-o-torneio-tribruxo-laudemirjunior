@@ -1,18 +1,20 @@
 import "./style.css";
+import Card from "../Card";
 
-const Card = ({ characterList }) => {
+const CardPerson = ({ estudades }) => {
   return (
-    <section>
-      {characterList.map((item) => (
+    <div>
+      {estudades.map((item) => (
         <Card
           key={item.name}
           img={item.image}
           name={item.name}
           house={item.house}
+          alive={item.alive}
         />
       ))}
-    </section>
+    </div>
   );
 };
 
-export default Card;
+export default CardPerson;

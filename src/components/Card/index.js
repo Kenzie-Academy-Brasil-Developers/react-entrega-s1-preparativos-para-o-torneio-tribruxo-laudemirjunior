@@ -1,11 +1,12 @@
 import "./style.css";
 
-const Card = ({ img, name, house }) => {
+const Card = ({ img, name, house, alive }) => {
   return (
-    <div>
+    <div className="card">
       <img src={img} alt={name} />
       <h2>{name}</h2>
       <h3>{house}</h3>
+      <h3>{alive}</h3>
     </div>
   );
 };
