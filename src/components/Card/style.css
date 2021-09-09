@@ -1,0 +1,25 @@
+.card {
+  height: 383px;
+  width: 311px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Gryffindor {
+  border-radius: 15px;
+  border: 3px solid red;
+}
+
+.Slytherin {
+  border-radius: 15px;
+  border: 3px solid green;
+}
+
+.Ravenclaw,
+.Hufflepuff {
+  border-radius: 15px;
+  border: 3px solid orange;
+}

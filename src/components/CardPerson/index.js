@@ -3,14 +3,14 @@ import Card from "../Card";
 
 const CardPerson = ({ estudades }) => {
   return (
-    <div>
+    <div className="container">
       {estudades.map((item) => (
         <Card
           key={item.name}
           img={item.image}
           name={item.name}
           house={item.house}
-          alive={item.alive}
+          alive={item.alive ? "Alive" : "Dead"}
         />
       ))}
     </div>
